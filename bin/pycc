@@ -1,0 +1,3 @@
+#!/Users/teobaiguera/Documents/REPLY/Capstone/app_deploy/bin/python3
+from numba.pycc import main
+main()

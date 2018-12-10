@@ -1,0 +1,232 @@
+body{
+    font-family:'Comfortaa';
+    background-color:#d3edff ;
+
+}
+
+
+
+    h1{ font-size:400%;
+    }
+    h2{ font-size:110%;
+    }
+
+
+#titleBox{
+        
+             /* !!! DA CSS IL FILE è DA PESCARE SI TROVA 2 cartelle indietro E poi dentro img !!!!*/
+             background-image:url('../img/bkgnd.jpg') ;
+           background-position:center;
+          
+           height:180px;
+           background-size:cover;
+           background-size:no-repeat;
+         }
+    
+
+
+h3{
+    font-size:75%;
+}
+
+
+#titleSite {
+            
+            font-size:250%;
+            font-weight: bold;
+              
+        text-align:left;
+   
+        color: white!important;
+        /* background-color:#6397D0;  */
+
+        /*text-shadow:20px 0px 1px #6397D0	;*/
+
+    
+    }
+
+#subtitleSite{
+
+     font-family:'Comfortaa';
+     font-size: 450%;
+     font-weight: bold;
+      /*background-color:#6397D0;*/
+
+    text-align: center;
+
+    /*text-shadow:20px 0px 1px #6397D0;*/
+    color: white!important;
+    position: relative;
+    float: bottom;
+
+}
+
+#menu{
+    display:inline;
+    text-align: center ;
+    margin-top: 60px;
+    padding:0;
+    list-style:none;
+}
+ /* menu > li applica le regole solo ai figli diretti dell' id="menu" 
+ [!! appilcherebbe le stesse regole anche alla class="subMenu"] */ 
+ /* menu  li applica le regole a qualsiasi lista dentro  li' id="menu" */ 
+#menu>li{
+ /*il  padding è la distanza tra testo [o altro contenuo] 
+    e il blocco dell'elemento[ il bordo astratto] 
+    al contrarion margin:20px mette il margine a tutto il blocco*/
+    padding:0;
+
+    /* Mettere in linea il blocco del menu in colonna */
+    display:inline;
+    font-size:200%;
+    text-align:center;
+}
+
+#menu2>li{
+ /*il  padding è la distanza tra testo [o altro contenuo]
+    e il blocco dell'elemento[ il bordo astratto]
+    al contrarion margin:20px mette il margine a tutto il blocco*/
+    padding:0;
+
+    /* Mettere in linea il blocco del menu in colonna */
+    display:inline-block;
+    font-size:200%;
+    text-align:center;
+}
+
+#menu>li>a {
+    display:inline; /* altrimenti non piglia margine e padding */
+    padding: 5px 10px;
+    margin-right:10px;
+    background-color:#6397D0 ;
+    color: rgb(255,255,255);
+    text-decoration:none;
+
+    transition: all 0.3s linear;
+}
+
+#menu>li>a:hover {
+    
+    background-color: transparent;
+    color: rgb(0,0,0);
+
+   /* visualizzare subMenu solo al passaggio del mouse */
+
+}
+
+
+#menuAlt{
+    display:inline;
+    text-align: center ;
+    margin-top: 60px;
+    padding:0;
+    list-style:none;
+}
+
+#menuAlt>li{
+ /*il  padding è la distanza tra testo [o altro contenuo]
+    e il blocco dell'elemento[ il bordo astratto]
+    al contrarion margin:20px mette il margine a tutto il blocco*/
+    padding:0;
+
+    /* Mettere in linea il blocco del menu in colonna */
+    display:inline;
+    font-size:200%;
+    text-align:center;
+}
+
+#menuAlt>li>a {
+    display:inline; /* altrimenti non piglia margine e padding */
+    padding: 5px 10px;
+    margin-right:10px;
+    background-color:#6397D0 ;
+    color: rgb(255,255,255);
+    text-decoration:none;
+
+    transition: all 0.3s linear;
+}
+
+#menuAlt>li>a:hover {
+
+    background-color: transparent;
+    color: rgb(0,0,0);
+
+   /* visualizzare subMenu solo al passaggio del mouse */
+
+}
+
+
+
+
+/* GOAL: mostare il sotto menu solo quando si fa hover su servicies. subMenu inizialiizzzato con display:none*/
+
+.subMenu{
+        display:none;
+        /*display:none;*/
+        /* position:absolute;
+        list-style:none;
+        margin:10px;
+        text-align:center;
+        padding:none;
+        background-color:rgb(255,255,255);
+        text-decoration:none; */
+        
+
+
+ /* alternative way for the effect*/
+ position:absolute;
+ list-style:none;
+ margin:0;
+ padding:none;
+
+ z-index:1;
+ opacity:0;
+ transition:all 0.3s linear;
+
+ top:110%;
+
+
+    }
+    
+.subMenu>li>a{ 
+
+    display:inline-block !important;
+    /*padding:20px 10px;*/
+    text-decoration:none;
+    color:#222;
+    background-color:rgb(255,255,255);
+    list-style:none;
+    transition: all 0.3s linear;
+    text-decoration:none;
+}
+
+.subMenu>li>a:hover{ 
+       display:inline-block !important;
+        /*padding:20px 10px;*/
+        text-decoration:none;
+        /*color:rgb(255,255,255);*/
+        color:#EFEEF1 ;
+        background-color:#D7CAE9;
+        list-style:none;
+
+        top:100%
+    
+    }
+
+.has-subMenu:hover .subMenu{
+    display:inline-block !important;
+    /*top:inherit;*/
+    opacity:0.5;
+
+}
+
+#footer{
+    text-align: center;
+    background-color:rgb(255,165,0);
+    background-size:cover;
+    margin:0;
+}
+
+
+

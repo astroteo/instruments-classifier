@@ -1,0 +1,9 @@
+.idea/
+out_test.mkv
+bin/
+pip-selfcheck.json
+pyvenv.cfg
+lib/
+include/
+
+

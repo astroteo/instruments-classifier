@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+<title> Matteo baiguera Capstone-project </title>
+<!-- <link rel="stylesheet"  type="text/css" href="./theme.css"> -->
+<!-- <link rel="stylesheet"  type="text/css" href="./theme3.css">  -->
+
+<!-- <link rel="stylesheet"  type="text/css" href="./fonts/stylesheet.css"> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet"  type="text/css" href="{{url_for('static',filename='CSS/styleSITE.css')}}">
+    <style>
+#myProgress {
+  margin: 20px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 75px;
+  background-color: #4CAF50;
+}
+
+#myVideo {
+  align:center;
+  margin: 20px;
+  width: 100%;
+
+}
+
+</style>
+<!--
+    <script>
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width=width+0.5;
+      elem.style.width = width + '%';
+    }
+  }
+}
+</script>
+
+    <script type="text/javascript">
+    var number = 123;
+  </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery.min.js" > </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script>
+	var source = new EventSource("/progress");
+	source.onmessage = function(event) {
+		$('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
+		$('.progress-bar-label').text(event.data+'%');
+		if(event.data == 100000){
+			source.close()
+		}
+	}
+	</script>
+-->
+</head>
+
+<body>
+<p>
+<div id="page" class="container">
+
+
+            <div id="header" class="row ">
+                        <div class="col-sm-4">
+
+<form action="{{url_for('get_link_app')}}" method="post">
+
+  <div class="form-group">
+
+      <input class="form-control form-control-lg" type="text" placeholder=" Choose from URL" name="user_link" id="input_a_song" />
+      <label for ="input_a_song"> Add a song to be Analyzed </label>
+  </div>
+    <!--
+  <button type="submit" class="btn btn-default" onclick="move()" >Analyze-song</button>
+  -->
+</form>
+
+                        </div>
+
+                  <div class="col-sm-4">
+
+
+                       </div>
+
+
+
+
+
+
+                 <h2>{{link_to_open}}</h2>
+
+
+            </div>
+
+
+</div>
+</p>
+
+<p>
+ <div class="row">
+
+                                                <div class="col-sm-6">
+
+
+
+                                                    <div id="myProgress">
+
+                                                    <div id="myBar"></div>
+
+                                                    </div>
+                                                    </div>
+
+                                               <div class="col-sm-6">
+                                                    <h1>
+
+                                                 progress: <script type="text/javascript">
+                                                document.write(number)
+                                                        </script> %
+
+                                                    </h1>
+                                                   </div>
+
+
+
+
+
+
+</div>
+</p>
+
+<p>
+    <div class="row">
+
+
+                                                <div class="col-sm-6"  >
+                                                    <div id="myVideo">
+  <iframe width="560" height="315" src="{{link_to_open}}" frameborder="0" allow="autoplay; encrypted-media" ></iframe>
+                                                        </div>
+                                               </div>
+</div>
+
+</p>
+
+
+
+
+</body>

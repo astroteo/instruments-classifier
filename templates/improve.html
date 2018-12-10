@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<title> Matteo baiguera Capstone-project </title>
+<head>
+<!-- <link rel="stylesheet"  type="text/css" href="./theme.css"> -->
+<!-- <link rel="stylesheet"  type="text/css" href="./theme3.css">  -->
+
+<!-- <link rel="stylesheet"  type="text/css" href="./fonts/stylesheet.css"> -->
+<!-- CSS style     -->
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet"  type="text/css" href="{{url_for('static',filename='CSS/styleSITE.css')}}">
+
+
+    <!-- CSS objects    -->
+    <style>
+    #myProgress {
+  margin: 20px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 75px;
+  background-color: #4CAF50;
+}
+
+#warnLength {
+  text-decoration-color:#b22222;
+  width: 1%;
+  height: 75px;
+ }
+
+ #bigger{
+  font-size:225%;!important
+ }
+
+
+
+.center {
+  margin: auto; !important
+  position: relative;!important
+  margin-top: 500px!important
+  margin-left: 500px!important
+ }
+
+.centerBlock {
+  display: table;
+  margin: auto;
+  margin-top: 50px!important
+}
+
+.centerBlock2 {
+  display: table;
+  margin: auto;
+  margin-left: 100px!important
+}
+
+
+.progress {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width:300px !important
+}
+
+.smallerform {
+  width: 100px !important
+  }
+
+  div#loading {
+    width: 100x;
+    height: 100px;
+    display: none;
+    /*background:url(/static/ajax-loader.gif) no-repeat;*/
+    cursor: wait;
+    }
+
+.smallersmallerform {
+  width: 100px !important;
+  height: 80px !important;
+  }
+
+  div#loading {
+    width: 100x;
+    height: 100px;
+    display: none;
+    /*background:url(/static/ajax-loader.gif) no-repeat;*/
+    cursor: wait;
+    }
+
+
+
+
+
+
+</style>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+
+</script>
+
+</head>
+
+<body>
+
+<div id="page" class="container">
+
+    <div  class="row ">
+                        <table class="table">
+                            <tr>
+<td>
+                            <iframe height="300" width="300" src="{{link_to_correct}}" frameborder="0" allowfullscreen></iframe>
+</td>
+
+
+                                <td>                                </td>
+                                <td class="fit right">
+
+<div class="bigger">
+<form action="{{url_for('improve_form')}}" method="post">
+<div class="form-group">
+
+<table class="table ">
+
+
+        <tr>
+
+        <td class="fit" > <label> <input type="checkbox" name= "inst" value="voi"  > Voice </label></td>
+
+         <td class="fit" > <label> <input type="checkbox" name= "inst" value="tru"  > Trumpet </label> </td>
+
+        </tr>
+        <tr>
+
+            <td class="fit" > <label> <input type="checkbox" name= "inst" value="vio"  > Violin </label></td>
+
+            <td class="fit" ><label> <input type="checkbox" name= "inst" value="pia"  > Piano </label></td>
+
+        </tr>
+        <tr>
+
+
+
+           <td class="fit" >  <label> <input type="checkbox" value="gui" name= "inst" > Guitar </label></td>
+        </tr>
+
+</table>
+
+
+
+
+  </div>
+    <button type="submit" class="btn btn-default" >Thanks for sumbit</button>
+
+</form>
+
+    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+
+
+
+                               <div class = "col-sm-6">
+
+                                <ul id="menu">
+                                        <li> <a href="/trash"> <--back </a></li>
+                                </ul>
+                               </div>
+</div>
+
+
+ <div id="footer" >
+                            <div class="centerBlockFooter">
+                                <br>
+                            <div class="row">
+
+                                    <div class="col-sm-4">
+                        <h3> see yoou soon</h3>
+                                        </div>
+
+
+                                <div class="col-sm-4">
+                                                   <h4>&copy; Matteo Baiguera  </h4>
+                                                </div>
+
+
+                                <div class="col-sm-4">
+                        <h3> Thanks to: </h3><img src="{{url_for('static',filename='img/Logo_Reply.png')}}" height="40px">
+                                        </div>
+                            <!--
+                                        <div class="col-sm-6">
+                                                <h3> Powered by Me </h3>
+                                        </div>
+                                        -->
+
+
+ </div>
+                            </div>
+ </div>
+
+
+</body>
+</html>

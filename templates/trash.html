@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<head>
+<title> Matteo baiguera Capstone-project </title>
+<!-- <link rel="stylesheet"  type="text/css" href="./theme.css"> -->
+<!-- <link rel="stylesheet"  type="text/css" href="./theme3.css">  -->
+
+<!-- <link rel="stylesheet"  type="text/css" href="./fonts/stylesheet.css"> -->
+<!-- CSS style     -->
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet"  type="text/css" href="{{url_for('static',filename='CSS/styleSITE.css')}}">
+
+
+    <!-- CSS objects    -->
+    <style>
+    #myProgress {
+  margin: 20px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 75px;
+  background-color: #4CAF50;
+}
+
+#warnLength {
+  text-decoration-color:#b22222;
+  width: 1%;
+  height: 75px;
+ }
+
+
+
+.center {
+  margin: auto; !important
+  position: relative;!important
+  margin-top: 500px!important
+  margin-left: 500px!important
+ }
+
+.centerBlock {
+  display: table;
+  margin: auto;
+  margin-top: 50px!important
+}
+
+.centerBlock2 {
+  display: table;
+  margin: auto;
+  margin-left: 100px!important
+}
+
+.right {
+    position: absolute;
+    left: 400px;
+
+    padding: 10px;
+}
+
+
+
+.progress {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width:300px !important
+}
+
+.smallerform {
+  width: 100px !important
+  }
+
+  div#loading {
+    width: 100x;
+    height: 100px;
+    display: none;
+    /*background:url(/static/ajax-loader.gif) no-repeat;*/
+    cursor: wait;
+    }
+
+.smallersmallerform {
+  width: 100px !important;
+  height: 80px !important;
+  }
+
+  div#loading {
+    width: 100x;
+    height: 100px;
+    display: none;
+    /*background:url(/static/ajax-loader.gif) no-repeat;*/
+    cursor: wait;
+    }
+
+</style>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+
+</script>
+
+<!--
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+
+var player1;
+  function onYouTubeIframeAPIReady() {
+
+    var ctrlq1 = document.getElementById("youtube-audio1");
+    ctrlq1.innerHTML = '<img id="youtube-icon1" src=""/><div id="youtube-player1"></div>';
+    ctrlq1.style.cssText = 'width:150px;margin:2em auto;cursor:pointer;cursor:hand;display:none';
+    ctrlq1.onclick = toggleAudio1;
+
+    player1 = new YT.Player('youtube-player1', {
+      height: '0',
+      width: '0',
+      videoId: ctrlq1.dataset.video,
+      playerVars: {
+        autoplay: ctrlq1.dataset.autoplay,
+        loop: ctrlq1.dataset.loop,
+      },
+      events: {
+        'onReady': onPlayerReady1,
+        'onStateChange': onPlayerStateChange1
+      }
+    });
+
+
+  }
+
+  function togglePlayButton1(play) {
+    document.getElementById("youtube-icon1").src = play ? "https://i.imgur.com/IDzX9gL.png" : "https://i.imgur.com/quyUPXN.png";
+  }
+
+  function toggleAudio1() {
+    if ( player1.getPlayerState() == 1 || player1.getPlayerState() == 3 ) {
+      player1.pauseVideo();
+      togglePlayButton1(false);
+    } else {
+      player1.playVideo();
+      togglePlayButton1(true);
+    }
+  }
+
+  function onPlayerReady1(event) {
+    player1.setPlaybackQuality("small");
+    document.getElementById("youtube-audio1").style.display = "block";
+    togglePlayButton1(player1.getPlayerState() !== 5);
+  }
+
+  function onPlayerStateChange1(event) {
+    if (event.data === 0) {
+      togglePlayButton1(false);
+    }
+  }
+    </script>
+
+    <script>
+function checkLength() {
+    if({{flag_length}}){
+    document.getElementById("check_length").innerHTML = "ok";
+    }
+    else{ document.getElementById("check_length").innerHTML = "nos"}
+}
+</script>
+
+
+    <script>
+    function move(){
+	var source = new EventSource("/progress");
+	source.onmessage = function(event) {
+		$('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
+		$('.progress-bar-label').text(event.data+'%');
+		if(event.data == 100){
+			source.close()
+		}
+	}
+	}
+	</script>
+
+-->
+
+<!--
+    <script>
+ function waitFunction() {
+    var x = document.getElementById("waitDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+    </script>
+
+-->
+
+</head>
+
+<div id="page" class="container">
+
+<!--
+<h1> Test my app</h1>
+-->
+
+
+
+
+
+
+<p>
+    <div class="row">
+    <div class="col-sm-6">
+
+    <form action="{{url_for('test_stuffs_get_link')}}" method="post">
+
+  <div class="form-group">
+
+      <img src="{{url_for('static',filename='img/yt_logo.png')}}" height="80px">
+      <font color="#ff0000" size="4">Video duration is limited to 60 minutes </font>
+      <input class="form-control form-control-lg" type="text" placeholder=" Choose a youtube URL" name="user_link" id="input_a_song" />
+      <label for ="input_a_song"> Add a song to be Analyzed </label>
+      <div class =smallerform>
+      <input class="form-control " id="input_start_time" name= start_time type=time min="0:00" max="5:00" width="4">
+      </div>
+          <label for ="input_start_time"> Starting time </label>
+       <div class =smallersmallerform>
+       <input type="number" name="end_time" min="5" name=end_time max="20" id="input_end_time" class="form-control form-control-lg">
+        <label for ="input_end_time"> End  time:  </label>
+       </div>
+      <font color="#ff0000" size="4"> analysis is limited to 20 seconds </font>
+  </div>
+
+  <button type="submit" class="btn btn-default" onclick="loading()">Analyze-song</button>
+</form>
+
+</div>
+
+<div class="col-sm-6">
+    <div class="centerBlock">
+
+         <div id="loading">
+             <h2>wait for processing</h2>
+             <br>
+             <img src="{{url_for('static',filename='ajax-loader.gif')}}" height="160px">
+
+
+         </div>
+
+         <div id="content">
+<div class="centerBlock2">
+    <font color="#ff0000" size="6" >{{flag_length}}</font>
+         <iframe  height="300" src="{{link_to_open}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <h2> song-title:{{yt_title}} </h2>
+    <h2> duration:{{yt_length}} </h2>
+         </div>
+
+    </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<!--
+<div class="row">
+
+    <div class="col-sm-4">
+ <font size="5"> Cello:{{cel_str}}</font>
+            <br>
+            <font  size="5"> Flute:{{flu_str}}</font>
+            <br>
+             <font  size="5"> Acustic Guitar:{{gac_str}}</font>
+
+
+
+        </div>
+
+      <div class="col-sm-4">
+
+             <font  size="5"> Electric Guitar:{{gel_str}}</font>
+          <br>
+
+          <font  size="5">Organ:{{org_str}}</font>
+          <br>
+          <font  size="5"> Piano:{{pia_str}}</font>
+
+
+        </div>
+
+
+    <div class="col-sm-4">
+
+             <font  size="5"> Trumpet:{{tru_str}}</font>
+        <br>
+           <font size="5"> Violin:{{vio_str}}</font>
+        <br>
+          <font  size="5"> Voice:{{voi_str}}</font>
+
+
+        </div>
+</div>
+-->
+    <br>
+<p>
+<div class = "row">
+
+    <div class = "col-sm-6">
+    <table class="table table-condensed">
+        <tr>
+          <td class="fit">
+            Trumpet
+          </td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style= "width: {{tru}}">
+              </div>
+            </div>
+          </td>
+          <td class="fit text-left">
+           {{tru_s}}
+          </td>
+        </tr>
+
+         <tr>
+          <td class="fit">
+            Voice
+          </td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style= "width:{{voi}}">
+              </div>
+            </div>
+          </td>
+          <td class="fit text-left">
+            {{voi_s}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="fit">
+            Violin
+          </td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style= "width:{{vio}}">
+              </div>
+            </div>
+          </td>
+          <td class="fit text-left">
+          {{vio_s}}
+          </td>
+        </tr>
+    </table>
+    </div>
+<div class = "col-sm-6">
+     <table class="table table-condensed">
+        <tr>
+          <td class="fit">
+            Piano
+          </td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar " aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style= "width:{{pia}}">
+              </div>
+            </div>
+          </td>
+          <td class="fit text-left">
+            {{pia_s}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="fit">
+            Guitar
+          </td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style= "width: {{gel}}">
+              </div>
+            </div>
+          </td>
+          <td class="fit text-left">
+            {{gel_s}}
+          </td>
+        </tr>
+         <tr>
+             <td></td>
+             <td></td>
+             <td></td>
+         </tr>
+     </table>
+</div>
+<p>
+<div class="row">
+
+
+
+                               <div class = "col-sm-6">
+
+                                <ul id="menu">
+                                        <li> <a href="/"> <--back </a></li>
+                                </ul>
+                               </div>
+
+
+
+
+                         <div class = "col-sm-6" style="float:left">
+
+
+                                       <ul id="menuAlt">
+
+                                        <li> <a href="improve"> help me improving my model --> </a></li>
+                                </ul>
+                             </div>
+                         </div>
+
+</div>
+</div>
+</p>
+
+<p><br></p>
+
+
+
+                  <div id="footer" >
+                            <div class="centerBlockFooter">
+                                <br>
+                            <div class="row">
+
+                                    <div class="col-sm-4">
+                        <h3> see yoou soon</h3>
+                                        </div>
+
+
+                                <div class="col-sm-4">
+                                                   <h4>&copy; Matteo Baiguera  </h4>
+                                                </div>
+
+
+                                <div class="col-sm-4">
+                        <h3> Thanks to: </h3><img src="{{url_for('static',filename='img/Logo_Reply.png')}}" height="40px">
+                                        </div>
+                            <!--
+                                        <div class="col-sm-6">
+                                                <h3> Powered by Me </h3>
+                                        </div>
+                                        -->
+
+
+ </div>
+                            </div>
+
+</div>
+
+
+
+</html>

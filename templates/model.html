@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<head>
+<title> Matteo baiguera Capstone-project </title>
+<!-- <link rel="stylesheet"  type="text/css" href="./theme.css"> -->
+<!-- <link rel="stylesheet"  type="text/css" href="./theme3.css">  -->
+
+<!-- <link rel="stylesheet"  type="text/css" href="./fonts/stylesheet.css"> -->
+
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
+<link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+
+    <link rel="stylesheet"  type="text/css" href="{{url_for('static',filename='CSS/styleSITE.css')}}">
+
+<style>
+
+.main_text{
+font-size: 125%;
+
+ }
+ .center_main_text{
+font-size: 125%;
+text-align:center
+
+ }
+    .main_main_text{
+font-size: 135%;
+text-align:center
+ }
+
+ .second_text{
+font-size: 125%;
+ }
+
+ body{
+ font-size: 110%;
+ }
+
+ .center_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+ </style>
+
+
+</head>
+
+
+<body>
+
+
+<!--
+
+        <p>
+
+        <div id="titleBox" class="container">
+                <div class="home-banner">
+
+                    </div>
+
+
+
+
+                    <h1 id="titleSite"> Capstone project </h1>
+                <h2 id="subtitleSite"> Matteo Baiguera</h2>
+
+
+
+
+
+        </div>
+
+    </p>
+
+    -->
+
+
+
+        <div id="page" class="container">
+             <p>
+                 <div class="main_main_text">
+
+            <b>Automatic instrument detection and classification is not that easy as it sounds!</b><br>
+        </div>
+            <br>
+
+            </p>
+<p>
+            <ul>
+
+            <b> <li><div class="main_text">About the data-set </div> </b>
+
+            IRMAS is an open-source dataset containing 6705 audio files in 16 bit stereo wav format sampled at 44.1kHz.
+                                            <br>
+                                            <br>
+                                            <div class="center_image">
+            <img src="{{url_for('static',filename='img/IRMAS_0.png')}}"  width="100px">
+
+             informations available <a href="https://www.upf.edu/web/mtg/irmas" target="_blank">  here <br> </a>
+                                            </div>
+
+                                            <br>
+                                            <br>
+            Dataset consits of 3 seconds excerpts from more than 2000 distinct recordings from over 9 instruments.
+            <br>
+            <br>
+
+                                <div class = "center_main_text">
+            <h2>The adopted approach follows 3 main steps:</h2>
+                <br>
+        </div>
+            <br>
+
+
+            <b> <li><div class="main_text">Preprocessing </div> </b> The original audio signal has been originally extracted thanks to Librosa python's library.<br>
+            <br>
+            <br>
+            <div class="center_image">
+            <img src="{{url_for('static',filename='img/waveplot_lb.png')}}"  width="500px">
+
+         <audio controls>
+
+             <source src="{{url_for('static',filename='img/trpt.wav')}}" type="audio/mpeg" height="250px">
+         </audio>
+
+            </div>
+
+            <br>
+            <br>
+
+         A Fast Fourier Transform with overlapping time windows is than performed on the raw audio signal in order to obtain the song's spectrogram. <br>
+            Finally the original spectrogram is then converted into "mel-scale": from frequencies [Hz] to human perceptual (logaritmic) scale of pitches!
+         <br>
+            <br>
+
+            <div class="center_image">
+
+         <img src="{{url_for('static',filename='img/Mel-spectrogram_lb.png')}}"  height="250px">
+            </div>
+
+         <br>
+         <br>
+
+
+
+            <b> <li><div class="main_text">Features-extraction </div> </b>
+
+            Both energy, cepstal and spectral features are extracted from the pre-processed signal and averaged over time.<br>
+            A total of 72 features are extracted each 3s of music!<br>
+
+            <table class="table table-condensed" >
+
+                <tr>
+
+                    <td class="fit text-right" > <b>Cepstral features:</b> </td> <td class="fit text-left"> first 20 Mel Frequency Cepstral Coefficients (MFCCs) and derivatives </td>
+                </tr>
+
+                <tr>
+
+                    <td class="fit text-right"> <b>Spectral features:</b> </td> <td lass="fit text-left"> Bandwith, spectral centroids and contrast </td>
+                </tr>
+
+                 <tr>
+                     <td class="fit text-right"> <b>Energy features:</b> </td> <td lass="fit text-left">  Root Mean Square Error (RMSE) and Zero Crossing Rate (ZCR)  </td>
+                </tr>
+
+            </table>
+
+            </li>
+
+            <br>
+            <br>
+
+
+             <b> <li><div class="main_text"> Training </div></b>
+            A total of  6 <b>"one-Vs-all"  </b> classifiers (one for each instrument) are then trained on the extracted features to detect instruments
+            inside the track! <br>
+            <div class ="center_main_text">
+            <b> Well-performing algorithm:</b> Support-Vector-Machines (radial-kernel)
+            </div>
+
+            <br>
+            <br>
+
+            <table>
+                <tr>
+
+                    <td class="fit text-center" > <div class="main_text"> <b>Voice </b> <br>Best case scenario! </div>
+                    <td class="fit text-right"><img src="{{url_for('static',filename='img/voice_cf.png')}}"  height="300px">
+                </td>
+                    <td class="fit text-center" > <div class="main_text"> <b>Violin:</b> <br> Worst case scenario! </div>
+                     <td class="fit text-right"><img src="{{url_for('static',filename='img/violin_cf.png')}}"  height="300px">
+                     </td>
+              </tr>
+
+
+
+
+
+
+
+            </table>
+
+            <br>
+            <br>
+
+            <b> <li><div class="main_text"> Deep-learnig as alternative approach </div> </b>
+            As found in literature, a deep learning binary classifier model has been built for instrument classification from mel-spectrograms.<br>
+            Here we look at spectrograms, treating them as images!
+
+            <div class="center_image">
+            <img src="{{url_for('static',filename='img/deep_on_mels.png')}}"  height="200px">
+            </div>
+
+            <br>
+
+            First results were encouraging!
+
+            <br>
+            <br>
+            <div class="center_image">
+            <table>
+                <tr>
+
+                    <td class="fit text-center" > <div class="main_text"> <b>Voice </b></div> <br>Convolutional Neural network!
+                    <td class="fit text-right"><img src="{{url_for('static',filename='img/voice_cf_cnn.png')}}"  height="300px">
+                </td>
+                </tr>
+                </table>
+                </div>
+            <br>
+            <br>
+            Unluckily no significant improvements has been observed for other instruments! <br>
+            Performances are probably limited because of reduced dataset's dimension. Unfortunately IRMAS-dataset is unbalanced.<br> Overfitting is experienced and accuracy drops for less represented instruments.
+
+
+
+
+    </ul>
+
+
+
+    <ul id="menu">
+                                        <li> <a href="/"> <--back </a></li>
+                                </ul>
+
+        </div>
+
+
+                        <div id="footer" >
+                            <div class="centerBlockFooter">
+                                <br>
+                            <div class="row">
+
+                                    <div class="col-sm-4">
+                        <h3> see yoou soon</h3>
+                                        </div>
+
+
+                                <div class="col-sm-4">
+                                                   <h4>&copy; Matteo Baiguera  </h4>
+                                                </div>
+
+
+                                <div class="col-sm-4">
+                        <h3> Thanks to: </h3><img src="{{url_for('static',filename='img/Logo_Reply.png')}}" height="40px">
+                                        </div>
+                            <!--
+                                        <div class="col-sm-6">
+                                                <h3> Powered by Me </h3>
+                                        </div>
+                                        -->
+
+
+ </div>
+                            </div>
+                        </div>
+
+</body>
+
+
+</html>
